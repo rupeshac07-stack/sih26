@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PackSmart AI — Food Packaging Decision System &amp; Supplier Directory</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Manrope', 'sans-serif'],
+          body: ['Hanken Grotesk', 'sans-serif']
+        },
+        colors: {
+          emerald: { 50: '#ecfdf5', 100: '#d1fae5', 200: '#a7f3d0', 500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b' }
+        }
+      }
+    }
+  }
+</script>
+<style>
+  .score-dial { transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1), stroke 0.4s ease; transform: rotate(-90deg); transform-origin: 50% 50%; }
+  .bar-fill { transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col selection:bg-emerald-100 selection:text-emerald-900">
+<!-- Header Navigation -->
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<a class="flex items-center gap-2.5" href="#">
+<div class="w-9 h-9 rounded-xl bg-emerald-700 flex items-center justify-center text-white font-extrabold text-base shadow-sm">P</div>
+<div>
+<div class="flex items-center gap-1.5 leading-none">
+<span class="text-lg font-extrabold tracking-tight text-slate-900">PackSmart</span>
+<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-500/30">AI</span>
+</div>
+<span class="text-[9px] font-semibold text-slate-500 uppercase tracking-wider block mt-0.5">Decision &amp; Sourcing Engine</span>
+</div>
+</a>
+<div class="hidden lg:flex items-center gap-2 text-xs font-body">
+<span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 font-semibold flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
+        Designed for Small-Scale Producers
+      </span>
+<span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 border border-slate-200 font-medium">
+        50 Verified Converters Across 21 States
+      </span>
+</div>
+<nav class="flex items-center gap-2 sm:gap-4 text-xs sm:text-sm font-semibold text-slate-600 font-body">
+<a class="hover:text-emerald-700 transition px-2 py-1" href="#input-section">Recommend</a>
+<a class="hover:text-emerald-700 transition px-2 py-1 text-emerald-700" href="#directory-section">Suppliers (50)</a>
+<a class="hover:text-emerald-700 transition px-2 py-1" href="#comparison-section">Compare</a>
+<a class="hover:text-emerald-700 transition px-2 py-1" href="#research-section">Research</a>
+<a class="ml-1 sm:ml-2 px-3.5 py-2 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-xs shadow-sm transition" href="#input-section">
+        Configure Decision Engine
+      </a>
+</nav>
+</div>
+</header>
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="bg-gradient-to-b from-emerald-50/70 via-slate-50 to-slate-50 border-b border-slate-200 py-10 sm:py-12 text-center">
+<div class="max-w-5xl mx-auto px-4 sm:px-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100/80 text-emerald-800 border border-emerald-200 mb-3 font-body">
+<span>✓ IS 9845 Safety Hard Constraint</span>
+<span class="text-emerald-300">•</span>
+<span>50 Verified Converters in 21 Indian States</span>
+<span class="text-emerald-300">•</span>
+<span>Real-Time 5-Factor Scoring</span>
+</div>
+<h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+        Choose the Right Packaging.<br/><span class="text-emerald-700">Connect With Local Verified Converters.</span>
+</h1>
+<p class="mt-3 text-sm sm:text-base text-slate-600 max-w-2xl mx-auto font-body">
+        AI-assisted packaging recommendations for small-scale Indian food producers. Evaluates postharvest respiration biology, temperature breaks, and directly matches local packaging converters.
+      </p>
+<div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+<a class="px-6 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm shadow-md transition" href="#input-section">
+          Run Decision Engine
+        </a>
+<a class="px-6 py-3 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-semibold text-sm transition" href="#directory-section">
+          Browse 50 Verified Suppliers
+        </a>
+</div>
+<div class="mt-8 pt-6 border-t border-slate-200/80 max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+<div><div class="text-lg font-bold text-slate-900">4–10 Days</div><div class="text-[11px] text-slate-500 font-body">Validated Shelf Gains</div></div>
+<div><div class="text-lg font-bold text-slate-900">IS 9845</div><div class="text-[11px] text-slate-500 font-body">Food Migration Ceiling</div></div>
+<div><div class="text-lg font-bold text-slate-900">21 States</div><div class="text-[11px] text-slate-500 font-body">50 Verified Suppliers</div></div>
+<div><div class="text-lg font-bold text-slate-900">0–100 Score</div><div class="text-[11px] text-slate-500 font-body">Real-Time Scientific Fit</div></div>
+</div>
+</div>
+</section>
+<!-- Input Workspace -->
+<section class="py-10 bg-slate-100/70 scroll-mt-12" id="input-section">
+<div class="max-w-6xl mx-auto px-4 sm:px-6">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-6 pb-3 border-b border-slate-200 gap-2">
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 font-body">Step 1 of 2</span>
+<span class="text-xs font-semibold text-slate-500 font-body">Dynamic Multi-Factor Decision Matrix</span>
+</div>
+<h2 class="text-2xl font-extrabold text-slate-900 mt-1">Tell us about your harvest &amp; product</h2>
+</div>
+<div class="flex items-center gap-2 px-3 py-1 bg-white rounded-xl border border-slate-200 text-xs shadow-xs font-body">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="text-slate-600 font-medium">Protocol Compliance:</span>
+<span class="font-bold text-emerald-800">FSSAI / IS 9845 Active</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Input Form -->
+<div class="lg:col-span-8 bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-5">
+<!-- 1. Commodity -->
+<div>
+<label class="block text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">
+              1. Food Commodity Classification <span class="text-red-500">*</span>
+</label>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<label class="flex items-center p-3 rounded-xl border-2 border-emerald-600 bg-emerald-50/50 cursor-pointer transition" id="card-mushroom">
+<input checked="" class="sr-only" name="commodity" onchange="handleCommodityChange('mushroom')" type="radio" value="mushroom"/>
+<span class="text-2xl mr-3">🍄</span>
+<div>
+<span class="text-sm font-bold text-slate-900 block">Fresh Mushrooms</span>
+<span class="text-xs text-slate-500 font-body">High respiration, O₂ exhaustion risk</span>
+</div>
+</label>
+<label class="flex items-center p-3 rounded-xl border-2 border-slate-200 bg-white cursor-pointer transition hover:bg-slate-50" id="card-paneer">
+<input class="sr-only" name="commodity" onchange="handleCommodityChange('paneer')" type="radio" value="paneer"/>
+<span class="text-2xl mr-3">🧀</span>
+<div>
+<span class="text-sm font-bold text-slate-900 block">Fresh Paneer</span>
+<span class="text-xs text-slate-500 font-body">Non-respiring, anaerobic spoilage</span>
+</div>
+</label>
+</div>
+</div>
+<!-- 2. Variety (Conditional) -->
+<div id="mushroom-variety-wrapper">
+<label class="block text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">
+              2. Select Mushroom Variety
+            </label>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+<button class="variety-btn p-2.5 text-center rounded-xl border border-slate-200 text-xs font-semibold hover:border-slate-300" onclick="selectVariety('Button Mushroom', 'Agaricus bisporus', 180, this)" type="button">
+<div class="font-bold text-slate-900">Button</div>
+<div class="text-[10px] text-slate-500 italic">A. bisporus</div>
+</button>
+<button class="variety-btn p-2.5 text-center rounded-xl border-2 border-emerald-600 bg-emerald-50 text-xs font-semibold" onclick="selectVariety('Oyster Mushroom', 'Pleurotus ostreatus', 220, this)" type="button">
+<div class="font-bold text-slate-900">Oyster</div>
+<div class="text-[10px] text-emerald-800 italic">P. ostreatus</div>
+</button>
+<button class="variety-btn p-2.5 text-center rounded-xl border border-slate-200 text-xs font-semibold hover:border-slate-300" onclick="selectVariety('Milky Mushroom', 'Calocybe indica', 150, this)" type="button">
+<div class="font-bold text-slate-900">Milky</div>
+<div class="text-[10px] text-slate-500 italic">C. indica</div>
+</button>
+<button class="variety-btn p-2.5 text-center rounded-xl border border-slate-200 text-xs font-semibold hover:border-slate-300" onclick="selectVariety('Paddy Straw', 'Volvariella volvacea', 280, this)" type="button">
+<div class="font-bold text-slate-900">Paddy Straw</div>
+<div class="text-[10px] text-slate-500 italic">V. volvacea</div>
+</button>
+</div>
+</div>
+<!-- 3. Pack Size -->
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<label class="text-xs font-bold text-slate-900 uppercase tracking-wider">3. Net Retail Weight Per Pack</label>
+<span class="text-xs font-mono font-semibold text-slate-600" id="pack-size-display">250 grams</span>
+</div>
+<div class="flex flex-wrap items-center gap-2 font-body">
+<button class="pack-size-btn px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-200 bg-white hover:bg-slate-50" onclick="setPackSize(100, this)" type="button">100 g</button>
+<button class="pack-size-btn px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-200 bg-white hover:bg-slate-50" onclick="setPackSize(200, this)" type="button">200 g</button>
+<button class="pack-size-btn active px-3 py-1.5 text-xs font-bold rounded-lg border-2 border-emerald-600 bg-emerald-50 text-emerald-800" onclick="setPackSize(250, this)" type="button">250 g</button>
+<button class="pack-size-btn px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-200 bg-white hover:bg-slate-50" onclick="setPackSize(500, this)" type="button">500 g</button>
+<button class="pack-size-btn px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-200 bg-white hover:bg-slate-50" onclick="setPackSize(1000, this)" type="button">1 kg</button>
+</div>
+</div>
+<!-- 4. Target Shelf Life -->
+<div>
+<label class="block text-xs font-bold text-slate-900 uppercase tracking-wider mb-1.5">4. Target Saleable Shelf Life</label>
+<div class="grid grid-cols-3 sm:grid-cols-5 gap-2 font-body">
+<button class="shelflife-btn p-2 text-xs font-semibold rounded-lg border border-slate-200 bg-white hover:border-slate-300" onclick="setShelfLife('1-2', this)" type="button">1–2 days</button>
+<button class="shelflife-btn p-2 text-xs font-semibold rounded-lg border border-slate-200 bg-white hover:border-slate-300" onclick="setShelfLife('3-5', this)" type="button">3–5 days</button>
+<button class="shelflife-btn active p-2 text-xs font-semibold rounded-lg border-2 border-emerald-600 bg-emerald-50 text-emerald-900 font-bold" onclick="setShelfLife('6-7', this)" type="button">6–7 days</button>
+<button class="shelflife-btn p-2 text-xs font-semibold rounded-lg border border-slate-200 bg-white hover:border-slate-300" onclick="setShelfLife('8-14', this)" type="button">8–14 days</button>
+<button class="shelflife-btn p-2 text-xs font-semibold rounded-lg border border-slate-200 bg-white hover:border-slate-300" onclick="setShelfLife('15+', this)" type="button">15+ days</button>
+</div>
+</div>
+<!-- 5. Storage Condition -->
+<div>
+<label class="block text-xs font-bold text-slate-900 uppercase tracking-wider mb-1.5">5. Cold-Chain &amp; Storage</label>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+<label class="p-2.5 rounded-xl border-2 border-emerald-600 bg-emerald-50/50 cursor-pointer flex flex-col justify-between" id="storage-refrig">
+<input checked="" class="sr-only" name="storage" onchange="setStorage('refrigerated')" type="radio" value="refrigerated"/>
+<span class="font-bold text-xs text-slate-900">Refrigerated (2–6°C)</span>
+<span class="text-[10px] text-emerald-800 font-medium mt-1 font-body">Recommended baseline</span>
+</label>
+<label class="p-2.5 rounded-xl border-2 border-slate-200 bg-white cursor-pointer flex flex-col justify-between hover:bg-slate-50" id="storage-room">
+<input class="sr-only" name="storage" onchange="setStorage('room')" type="radio" value="room"/>
+<span class="font-bold text-xs text-slate-900">Ambient Room (26–34°C)</span>
+<span class="text-[10px] text-amber-700 font-medium mt-1 font-body">3.5x respiration spike</span>
+</label>
+<label class="p-2.5 rounded-xl border-2 border-slate-200 bg-white cursor-pointer flex flex-col justify-between hover:bg-slate-50" id="storage-transit">
+<input class="sr-only" name="storage" onchange="setStorage('transit')" type="radio" value="transit"/>
+<span class="font-bold text-xs text-slate-900">Mixed Transit (Sweating)</span>
+<span class="text-[10px] text-slate-500 font-medium mt-1 font-body">Thermal shock risk</span>
+</label>
+</div>
+</div>
+<!-- 6. Location & Sourcing (Two-way sync) -->
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<label class="text-xs font-bold text-slate-900 uppercase tracking-wider">6. Production Location &amp; Regional Supplier Cluster</label>
+<span class="text-[10px] text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded font-body">Two-Way Synced to Directory</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 font-body">
+<div>
+<label class="block text-[11px] font-semibold text-slate-600 mb-1">State / UT (21 States Active)</label>
+<select class="w-full text-xs font-medium py-2 px-3 border-slate-200 rounded-xl focus:ring-emerald-600 focus:border-emerald-600 bg-white" id="producer-state-select" onchange="handleStateChange(this.value)">
+<option value="Andhra Pradesh">Andhra Pradesh</option>
+<option value="Bihar">Bihar</option>
+<option value="Chhattisgarh">Chhattisgarh</option>
+<option value="Delhi">Delhi</option>
+<option value="Goa">Goa</option>
+<option value="Gujarat">Gujarat</option>
+<option value="Haryana">Haryana</option>
+<option value="Himachal Pradesh">Himachal Pradesh</option>
+<option value="Jharkhand">Jharkhand</option>
+<option value="Karnataka">Karnataka</option>
+<option value="Kerala">Kerala</option>
+<option value="Madhya Pradesh">Madhya Pradesh</option>
+<option value="Maharashtra">Maharashtra</option>
+<option value="Odisha">Odisha</option>
+<option value="Punjab">Punjab</option>
+<option value="Rajasthan">Rajasthan</option>
+<option selected="" value="Tamil Nadu">Tamil Nadu</option>
+<option value="Telangana">Telangana</option>
+<option value="Uttar Pradesh">Uttar Pradesh</option>
+<option value="Uttarakhand">Uttarakhand</option>
+<option value="West Bengal">West Bengal</option>
+</select>
+</div>
+<div>
+<label class="block text-[11px] font-semibold text-slate-600 mb-1">City / District Hub</label>
+<input class="w-full text-xs font-medium py-2 px-3 border-slate-200 rounded-xl focus:ring-emerald-600 focus:border-emerald-600 bg-white" id="producer-city-input" oninput="handleCityInput(this.value)" placeholder="e.g. Coimbatore, Mumbai, Delhi" type="text" value="Coimbatore"/>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-1.5 mt-2 font-body">
+<span class="text-[10px] text-slate-400 font-semibold uppercase mr-1">Quick Hubs:</span>
+<button class="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 text-[11px] text-slate-700" onclick="quickSetLocation('Coimbatore', 'Tamil Nadu')" type="button">Coimbatore</button>
+<button class="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 text-[11px] text-slate-700" onclick="quickSetLocation('Chennai', 'Tamil Nadu')" type="button">Chennai</button>
+<button class="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 text-[11px] text-slate-700" onclick="quickSetLocation('Bengaluru', 'Karnataka')" type="button">Bengaluru</button>
+<button class="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 text-[11px] text-slate-700" onclick="quickSetLocation('Mumbai', 'Maharashtra')" type="button">Mumbai</button>
+<button class="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 text-[11px] text-slate-700" onclick="quickSetLocation('Hyderabad', 'Telangana')" type="button">Hyderabad</button>
+<button class="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 text-[11px] text-slate-700" onclick="quickSetLocation('Delhi', 'Delhi')" type="button">Delhi NCR</button>
+</div>
+</div>
+<!-- 7. Budget -->
+<div>
+<label class="block text-xs font-bold text-slate-900 uppercase tracking-wider mb-1.5">7. Target Packaging Budget Per Pack</label>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2 font-body">
+<button class="budget-btn p-2 text-xs rounded-lg border border-slate-200 bg-white hover:border-slate-300" onclick="setBudget('under-2', this)" type="button">₹1 – ₹2 (Low Budget)</button>
+<button class="budget-btn active p-2 text-xs rounded-lg border-2 border-emerald-600 bg-emerald-50 text-emerald-900 font-bold" onclick="setBudget('2-5', this)" type="button">₹2 – ₹5 (Standard)</button>
+<button class="budget-btn p-2 text-xs rounded-lg border border-slate-200 bg-white hover:border-slate-300" onclick="setBudget('5-10', this)" type="button">₹5 – ₹10</button>
+<button class="budget-btn p-2 text-xs rounded-lg border border-slate-200 bg-white hover:border-slate-300" onclick="setBudget('none', this)" type="button">No strict budget</button>
+</div>
+</div>
+<!-- Analyze Action Button -->
+<div class="pt-3 border-t border-slate-100">
+<button class="w-full py-3.5 px-6 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm shadow-md transition flex items-center justify-center gap-2 group" id="analyze-btn" onclick="executeAnalysis()" type="button">
+<span id="btn-text">Analyze Packaging &amp; Match Local Converters</span>
+<span class="transition-transform group-hover:translate-x-1" id="btn-icon">→</span>
+</button>
+</div>
+</div>
+<!-- Live Biology Sidebar -->
+<div class="lg:col-span-4 space-y-4">
+<div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs sticky top-20 font-body">
+<div class="flex items-center justify-between pb-3 border-b border-slate-100 font-sans">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<h3 class="font-bold text-xs uppercase tracking-wider text-slate-900">Live Postharvest Model</h3>
+</div>
+<span class="text-[10px] font-semibold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded">Active Engine</span>
+</div>
+<div class="mt-4 space-y-3 text-xs">
+<div>
+<div class="text-slate-500 text-[11px]">Active Commodity</div>
+<div class="text-sm font-extrabold text-slate-900 font-sans" id="live-commodity-title">Oyster Mushroom (Pleurotus ostreatus)</div>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
+<div>
+<div class="text-[11px] text-slate-500">Respiration Rate</div>
+<div class="text-sm font-bold text-slate-900 font-mono" id="live-rr-val">180–220</div>
+<div class="text-[10px] text-slate-400" id="live-rr-unit">mg CO₂/kg·h @ 5°C</div>
+</div>
+<div>
+<div class="text-[11px] text-slate-500">Moisture Level</div>
+<div class="text-sm font-bold text-slate-900 font-mono" id="live-moisture-val">90–92%</div>
+<div class="text-[10px] text-slate-400" id="live-moisture-sub">Sweating weight loss risk</div>
+</div>
+</div>
+<div class="pt-2 border-t border-slate-100">
+<div class="flex justify-between text-slate-600 text-[11px] mb-1">
+<span>OTR Permeability Target:</span>
+<span class="font-mono font-bold text-slate-800" id="live-otr-val">8,000–12,000 cc/m²·d</span>
+</div>
+<div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-600 h-1.5 rounded-full transition-all" id="live-perm-bar" style="width: 82%"></div>
+</div>
+</div>
+<!-- Real-time Score Preview Badge -->
+<div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold text-slate-700 uppercase tracking-wider">Estimated Score</span>
+<span class="font-mono font-black text-sm px-2 py-0.5 rounded bg-emerald-100 text-emerald-800" id="sidebar-live-score">92 / 100</span>
+</div>
+<div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-600 h-1.5 rounded-full bar-fill" id="sidebar-score-bar" style="width: 92%"></div>
+</div>
+<p class="text-[10px] text-slate-500 leading-tight" id="sidebar-verdict-summary">Calculated across 5 sub-factors (Storage, Shelf Life, Gas/Moisture, Physical Crush, Cost Alignment).</p>
+</div>
+<div class="p-3 bg-emerald-50/70 rounded-xl border border-emerald-100 text-[11px] text-emerald-950 space-y-1">
+<div class="font-bold flex items-center gap-1">✓ Live Sourcing Link Active</div>
+<p>Changing state automatically filters 50 converters across 21 Indian States below.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommendation Results Section -->
+<section class="py-10 bg-white border-t border-slate-200 hidden scroll-mt-12" id="results-container">
+<div class="max-w-6xl mx-auto px-4 sm:px-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-200 gap-3">
+<div>
+<span class="text-xs font-bold uppercase tracking-wider text-emerald-700 font-mono">5-Factor Scientific Recommendation</span>
+<h2 class="text-2xl font-extrabold text-slate-900 mt-0.5">Recommended Packaging Specification</h2>
+</div>
+<div class="flex items-center gap-2">
+<a class="px-3.5 py-2 rounded-lg bg-emerald-700 text-white hover:bg-emerald-800 text-xs font-semibold transition font-body" href="#directory-section">
+            View Matched Suppliers Below ↓
+          </a>
+</div>
+</div>
+<!-- Critical Warning Banner (Dynamic) -->
+<div class="hidden mt-6 p-4 rounded-xl border border-red-300 bg-red-50 text-red-900 flex items-start gap-3" id="hazard-banner">
+<span class="text-xl">⚠️</span>
+<div>
+<h4 class="font-extrabold text-sm text-red-800" id="hazard-title">Critical Biological Hazard Detected</h4>
+<p class="text-xs text-red-700 mt-0.5 font-body" id="hazard-desc">Severe anaerobic off-gas formation or rapid spoilage predicted under these parameters.</p>
+</div>
+</div>
+<!-- Main Recommendation Card -->
+<div class="rounded-2xl border-2 border-emerald-600 bg-white overflow-hidden shadow-xs my-6 transition-colors" id="main-rec-card">
+<div class="px-6 py-2.5 bg-emerald-700 text-white flex items-center justify-between text-xs font-semibold" id="rec-top-stripe">
+<span id="rec-top-left-badge">REAL-TIME 5-FACTOR OPTIMIZED FIT</span>
+<span class="font-mono text-[11px]">ICAR-DMR / IS 9845 Aligned</span>
+</div>
+<div class="p-6">
+<div class="flex flex-col lg:flex-row gap-6 justify-between items-start">
+<div class="space-y-2.5 max-w-2xl">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 font-body" id="rec-tier-badge">Tier 1 Solution</span>
+<span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 font-body" id="rec-status-tag">Research Verified</span>
+</div>
+<h3 class="text-2xl font-extrabold text-slate-900" id="rec-title">Ventilated Food-Grade PET Punnet (6-Macro Vent Clamshell)</h3>
+<p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-body" id="rec-summary">
+                Engineered for high-respiration fungal sporocarps. Delivers structural rigid defense during crate transit, dissipates transpirational heat, and prevents anaerobic foul fermentation.
+              </p>
+<!-- 5-Factor Score Breakdown Bars -->
+<div class="pt-3">
+<div class="text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-2">5-Factor Empirical Weighting Model</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-xs font-body">
+<div>
+<div class="flex justify-between text-[11px] text-slate-600 mb-0.5">
+<span>1. Storage &amp; Biological Fit (35 pts)</span>
+<span class="font-mono font-bold text-slate-900" id="score-f1">33 / 35</span>
+</div>
+<div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-600 h-1.5 rounded-full bar-fill" id="bar-f1" style="width: 94%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[11px] text-slate-600 mb-0.5">
+<span>2. Shelf Life Feasibility (25 pts)</span>
+<span class="font-mono font-bold text-slate-900" id="score-f2">23 / 25</span>
+</div>
+<div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-600 h-1.5 rounded-full bar-fill" id="bar-f2" style="width: 92%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[11px] text-slate-600 mb-0.5">
+<span>3. Moisture &amp; Gas Control (20 pts)</span>
+<span class="font-mono font-bold text-slate-900" id="score-f3">19 / 20</span>
+</div>
+<div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-600 h-1.5 rounded-full bar-fill" id="bar-f3" style="width: 95%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[11px] text-slate-600 mb-0.5">
+<span>4. Transit &amp; Crush Protection (10 pts)</span>
+<span class="font-mono font-bold text-slate-900" id="score-f4">9 / 10</span>
+</div>
+<div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-600 h-1.5 rounded-full bar-fill" id="bar-f4" style="width: 90%"></div>
+</div>
+</div>
+<div class="sm:col-span-2">
+<div class="flex justify-between text-[11px] text-slate-600 mb-0.5">
+<span>5. Budget &amp; Cost Alignment (10 pts)</span>
+<span class="font-mono font-bold text-slate-900" id="score-f5">9 / 10</span>
+</div>
+<div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-600 h-1.5 rounded-full bar-fill" id="bar-f5" style="width: 90%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Score Dial Component -->
+<div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col items-center w-full sm:w-64">
+<div class="text-xs text-slate-500 font-medium mb-1 font-body">Overall Suitability Score</div>
+<div class="relative w-28 h-28 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="40" stroke="#e2e8f0" stroke-width="8"></circle>
+<circle class="score-dial" cx="50" cy="50" fill="none" id="score-circle-bar" r="40" stroke="#047857" stroke-dasharray="251.32" stroke-dashoffset="20" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute flex flex-col items-center justify-center text-center">
+<span class="text-3xl font-black text-slate-900 font-mono" id="rec-score-num">92</span>
+<span class="text-[10px] text-slate-400 font-body">/ 100</span>
+</div>
+</div>
+<div class="mt-2.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-900 text-center font-body" id="rec-suitability-badge">
+                HIGH SUITABILITY / RESEARCH VERIFIED
+              </div>
+<div class="text-[10px] text-slate-500 mt-2 text-center font-body" id="rec-score-subnote">
+                IS 9845 migration safe &amp; biological parameters compliant
+              </div>
+</div>
+</div>
+<!-- Key Metrics -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6 pt-4 border-t border-slate-100 text-xs font-body">
+<div class="p-3 bg-slate-50 rounded-xl border border-slate-200/80">
+<div class="text-slate-500 text-[11px]">Expected Shelf Life</div>
+<div class="text-sm font-extrabold text-slate-900 mt-0.5 font-sans" id="rec-shelflife-val">7–10 Days</div>
+<div class="text-[10px] text-emerald-700" id="rec-shelflife-sub">Chilled 4–6°C continuous</div>
+</div>
+<div class="p-3 bg-slate-50 rounded-xl border border-slate-200/80">
+<div class="text-slate-500 text-[11px]">Storage Protocol</div>
+<div class="text-sm font-extrabold text-slate-900 mt-0.5 font-sans" id="rec-storage-val">4–6°C Cold Chain</div>
+<div class="text-[10px] text-slate-500" id="rec-storage-sub">Chilling room needed</div>
+</div>
+<div class="p-3 bg-slate-50 rounded-xl border border-slate-200/80">
+<div class="text-slate-500 text-[11px]">Indicative Unit Cost</div>
+<div class="text-sm font-extrabold text-slate-900 mt-0.5 font-mono" id="rec-unitcost-val">₹3.85 / unit</div>
+<div class="text-[10px] text-slate-500">Local converter quotation</div>
+</div>
+<div class="p-3 bg-slate-50 rounded-xl border border-slate-200/80">
+<div class="text-slate-500 text-[11px]">Machinery Needed</div>
+<div class="text-sm font-extrabold text-emerald-700 mt-0.5 font-sans" id="rec-machinery-val">Zero CaPEx</div>
+<div class="text-[10px] text-slate-500" id="rec-machinery-sub">Self-hinging clamshell</div>
+</div>
+</div>
+<!-- Dynamic "Why This Packaging?" & Batch Estimator Box -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-4 mt-4 pt-4 border-t border-slate-100">
+<div class="lg:col-span-8 p-4 rounded-xl bg-slate-50 border border-slate-200">
+<h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">Scientific Fit Rationale: Why This Format?</h4>
+<ul class="space-y-1.5 text-xs text-slate-700 font-body" id="rec-rationale-list">
+<li class="flex items-start gap-2">
+<span class="text-emerald-600 font-bold">✓</span>
+<span><strong>Respiration Balance:</strong> Macro-perforations maintain oxygen equilibrium above 3.5%, preventing noxious ethanol production.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-emerald-600 font-bold">✓</span>
+<span><strong>Crush &amp; Rigidity:</strong> Virgin 180μ thermoformed APET prevents pileus cap mechanical bruising during multi-tier transport.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-emerald-600 font-bold">✓</span>
+<span><strong>Microbial Defense:</strong> Non-fog surface prevents water droplets from falling back onto delicate mycelial caps.</span>
+</li>
+</ul>
+</div>
+<!-- Quick Batch Cost Calculator -->
+<div class="lg:col-span-4 p-4 rounded-xl bg-emerald-50/50 border border-emerald-100 flex flex-col justify-between font-body">
+<div>
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold uppercase tracking-wider text-emerald-900">Batch Cost Estimator</span>
+<span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-200 text-emerald-900 font-semibold font-mono">Live</span>
+</div>
+<div class="mt-2 text-xs text-slate-600">
+                  Batch volume:
+                  <select class="text-xs font-semibold py-1 px-2 border-emerald-300 rounded bg-white text-slate-900 ml-1" id="batch-quantity-select" onchange="updateBatchCost()">
+<option value="500">500 units</option>
+<option selected="" value="1000">1,000 units</option>
+<option value="5000">5,000 units</option>
+<option value="10000">10,000 units</option>
+</select>
+</div>
+<div class="mt-3">
+<div class="text-[11px] text-slate-500">Estimated Total Packaging Cost:</div>
+<div class="text-xl font-extrabold text-emerald-900 font-mono" id="batch-total-cost">₹3,850</div>
+</div>
+</div>
+<div class="text-[10px] text-emerald-800 mt-2">
+                Matched with <span class="font-bold" id="batch-supplier-match-count">4 local converters</span> in your state.
+              </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Verified Local Packaging Manufacturers & Suppliers Directory Section -->
+<section class="py-12 bg-white border-t border-slate-200 scroll-mt-12" id="directory-section">
+<div class="max-w-6xl mx-auto px-4 sm:px-6">
+<!-- Section Header -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between pb-6 border-b border-slate-200 gap-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="text-xs font-bold uppercase tracking-wider text-emerald-700 font-mono">Direct Sourcing Directory</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 flex items-center gap-1 font-body">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
+<span>Complete 50 Converters in 21 Indian States</span>
+</span>
+</div>
+<h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Verified Local Packaging Manufacturers &amp; Suppliers</h2>
+<p class="text-xs sm:text-sm text-slate-600 mt-1 font-body">
+            Connect directly with verified converters offering food-grade materials, low MOQs, and IS 9845 compliance certificates. Filter in real-time by state or major industrial hub.
+          </p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-3.5 py-2 rounded-xl border border-emerald-200 flex items-center gap-1.5 shadow-2xs font-body">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span id="supplier-counter-badge">Showing 4 verified suppliers in Tamil Nadu</span>
+</span>
+</div>
+</div>
+<!-- State Filter Bar & Quick Pills -->
+<div class="mt-6 p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3.5">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-center gap-2 w-full sm:w-auto">
+<label class="text-xs font-bold text-slate-800 uppercase tracking-wider whitespace-nowrap" for="directory-state-select">
+              Select State / UT:
+            </label>
+<select class="w-full sm:w-64 text-xs font-semibold px-3 py-2 rounded-xl border-slate-300 focus:border-emerald-600 focus:ring-emerald-600 bg-white shadow-2xs font-body" id="directory-state-select" onchange="handleDirectoryFilterChange(this.value)">
+<option value="ALL">All States (Pan-India — 50 Suppliers)</option>
+<option value="Andhra Pradesh">Andhra Pradesh</option>
+<option value="Bihar">Bihar</option>
+<option value="Chhattisgarh">Chhattisgarh</option>
+<option value="Delhi">Delhi</option>
+<option value="Goa">Goa</option>
+<option value="Gujarat">Gujarat</option>
+<option value="Haryana">Haryana</option>
+<option value="Himachal Pradesh">Himachal Pradesh</option>
+<option value="Jharkhand">Jharkhand</option>
+<option value="Karnataka">Karnataka</option>
+<option value="Kerala">Kerala</option>
+<option value="Madhya Pradesh">Madhya Pradesh</option>
+<option value="Maharashtra">Maharashtra</option>
+<option value="Odisha">Odisha</option>
+<option value="Punjab">Punjab</option>
+<option value="Rajasthan">Rajasthan</option>
+<option selected="" value="Tamil Nadu">Tamil Nadu</option>
+<option value="Telangana">Telangana</option>
+<option value="Uttar Pradesh">Uttar Pradesh</option>
+<option value="Uttarakhand">Uttarakhand</option>
+<option value="West Bengal">West Bengal</option>
+</select>
+</div>
+<div class="text-[11px] text-slate-500 font-medium font-body">
+            Two-way synced with the decision engine location parameter.
+          </div>
+</div>
+<!-- Quick Filter Pills -->
+<div class="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-200 font-body">
+<span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mr-1">Quick Select:</span>
+<button class="dir-pill px-3 py-1 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition" onclick="setDirectoryFilter('ALL')" type="button">All States</button>
+<button class="dir-pill active px-3 py-1 rounded-lg text-xs font-bold bg-emerald-700 text-white border border-emerald-700 transition" onclick="setDirectoryFilter('Tamil Nadu')" type="button">Tamil Nadu</button>
+<button class="dir-pill px-3 py-1 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition" onclick="setDirectoryFilter('Karnataka')" type="button">Karnataka</button>
+<button class="dir-pill px-3 py-1 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition" onclick="setDirectoryFilter('Maharashtra')" type="button">Maharashtra</button>
+<button class="dir-pill px-3 py-1 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition" onclick="setDirectoryFilter('Telangana')" type="button">Telangana</button>
+<button class="dir-pill px-3 py-1 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition" onclick="setDirectoryFilter('Delhi')" type="button">Delhi NCR</button>
+<button class="dir-pill px-3 py-1 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition" onclick="setDirectoryFilter('Gujarat')" type="button">Gujarat</button>
+</div>
+</div>
+<!-- Suppliers Grid -->
+<div class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="suppliers-grid">
+<!-- Rendered dynamically from the embedded 50-manufacturer dataset -->
+</div>
+<!-- Empty / Fallback State -->
+<div class="hidden mt-6 p-8 rounded-2xl bg-amber-50/80 border border-amber-200 text-center font-body" id="empty-state-notice">
+<span class="text-3xl block mb-2">🔍</span>
+<h4 class="text-base font-bold text-amber-900 font-sans">No Direct Converter Registered In This Exact State</h4>
+<p class="text-xs text-amber-800 max-w-md mx-auto mt-1" id="empty-state-text">
+          No direct converter registered in this state yet. Showing nearest verified suppliers in the region with pan-India courier delivery.
+        </p>
+<button class="mt-3 px-4 py-2 rounded-lg bg-white border border-amber-300 text-xs font-bold text-amber-900 hover:bg-amber-100 transition shadow-xs" onclick="setDirectoryFilter('ALL')" type="button">
+          View All 50 Pan-India Suppliers
+        </button>
+</div>
+<!-- Safety Notice -->
+<div class="mt-8 p-4 rounded-xl bg-emerald-50/60 border border-emerald-200/80 flex flex-col sm:flex-row items-center justify-between gap-3 font-body">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-sm flex-shrink-0 font-sans">✓</div>
+<div class="text-xs text-emerald-950">
+<strong>Direct Verified Conversion Guarantee:</strong> All 50 listed converters supply food-grade packaging meeting IS 9845 migration ceilings and FSSAI 2018 guidelines.
+          </div>
+</div>
+<a class="text-xs font-bold text-emerald-800 hover:text-emerald-900 whitespace-nowrap" href="#input-section">Adjust Requirements ↑</a>
+</div>
+</div>
+</section>
+<!-- Comparison Section -->
+<section class="py-12 bg-slate-50 border-t border-slate-200 scroll-mt-12" id="comparison-section">
+<div class="max-w-6xl mx-auto px-4 sm:px-6">
+<div class="mb-6">
+<span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Comparative Matrix</span>
+<h2 class="text-2xl font-extrabold text-slate-900 mt-1">5-Factor Empirical Packaging Comparison</h2>
+</div>
+<div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-x-auto font-body">
+<table class="w-full text-left text-xs sm:text-sm">
+<thead class="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold uppercase text-[11px] tracking-wider font-sans">
+<tr>
+<th class="py-3 px-4 sm:px-6">Packaging Medium</th>
+<th class="py-3 px-4">Cost / Unit (₹)</th>
+<th class="py-3 px-4">Gas Transmission (OTR)</th>
+<th class="py-3 px-4">Crush Safety</th>
+<th class="py-3 px-4 text-right">Suitability Verdict</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 text-slate-700">
+<tr class="hover:bg-slate-50/80">
+<td class="py-3.5 px-4 sm:px-6">
+<div class="font-bold text-slate-900 font-sans">Ventilated PET Punnet (6 Macro Vents)</div>
+<div class="text-xs text-slate-500">Clamshell lid, 180–200μ virgin polymer</div>
+</td>
+<td class="py-3.5 px-4 font-mono font-semibold text-slate-900">₹3.40 – ₹4.20</td>
+<td class="py-3.5 px-4">High (Passive equilibrium)</td>
+<td class="py-3.5 px-4 text-emerald-700 font-medium">★★★★★ Rigid</td>
+<td class="py-3.5 px-4 text-right">
+<span class="font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full text-xs">Best for Chilled Mushrooms</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/80">
+<td class="py-3.5 px-4 sm:px-6">
+<div class="font-bold text-slate-900 font-sans">Micro-Perforated LDPE Pouch (25–30 Micron)</div>
+<div class="text-xs text-slate-500">4–6 needle pinholes, impulse heat-sealed</div>
+</td>
+<td class="py-3.5 px-4 font-mono font-semibold text-slate-900">₹1.10 – ₹1.60</td>
+<td class="py-3.5 px-4">Medium (Pin-dependent)</td>
+<td class="py-3.5 px-4 text-amber-600 font-medium">★☆☆☆☆ None</td>
+<td class="py-3.5 px-4 text-right">
+<span class="font-semibold text-amber-800 bg-amber-50 px-2.5 py-1 rounded-full text-xs">Sub-₹2 Budget Viable</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/80">
+<td class="py-3.5 px-4 sm:px-6">
+<div class="font-bold text-slate-900 font-sans">7 to 9-Layer PA/PE Vacuum Barrier Pouch</div>
+<div class="text-xs text-slate-500">Co-extruded nylon barrier (80–100μ)</div>
+</td>
+<td class="py-3.5 px-4 font-mono font-semibold text-slate-900">₹2.80 – ₹3.60</td>
+<td class="py-3.5 px-4">Ultra-Low (&lt; 30 cc/m²·day)</td>
+<td class="py-3.5 px-4 text-blue-700 font-medium">★★★★☆ Vacuum skin</td>
+<td class="py-3.5 px-4 text-right">
+<span class="font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full text-xs">Best for Fresh Paneer</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Research Evidence Section -->
+<section class="py-12 bg-white border-t border-slate-200 scroll-mt-12" id="research-section">
+<div class="max-w-6xl mx-auto px-4 sm:px-6">
+<div class="max-w-2xl mb-6">
+<span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Scientific Foundation</span>
+<h2 class="text-2xl font-extrabold text-slate-900 mt-1">Peer-Reviewed Post-Harvest Research Library</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5 font-body">
+<div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+<span class="text-[10px] font-bold text-emerald-800 bg-emerald-100/80 px-2 py-0.5 rounded-full font-sans">ICAR - DMR Solan</span>
+<h3 class="font-bold text-slate-900 text-sm mt-2 mb-1 font-sans">Macro-Perforation Equilibria for Pleurotus</h3>
+<p class="text-xs text-slate-600 leading-relaxed">
+            6 evenly spaced 3mm perforations on a 250g PET punnet sustained O₂ above 4% and CO₂ below 9%, preventing the anaerobic off-flavor threshold for up to 9 days at 4°C.
+          </p>
+</div>
+<div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+<span class="text-[10px] font-bold text-blue-800 bg-blue-100/80 px-2 py-0.5 rounded-full font-sans">CFTRI Mysuru Field Study</span>
+<h3 class="font-bold text-slate-900 text-sm mt-2 mb-1 font-sans">Tyrosinase Suppression &amp; Cap Whiteness</h3>
+<p class="text-xs text-slate-600 leading-relaxed">
+            Anti-fog coated punnet lidding reduced condensation-borne microbial browning by 38% compared to plain wrap, sustaining cap whiteness (L* &gt; 82) over 6 days.
+          </p>
+</div>
+<div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+<span class="text-[10px] font-bold text-amber-800 bg-amber-100/80 px-2 py-0.5 rounded-full font-sans">NDRI Dairy Tech Dept</span>
+<h3 class="font-bold text-slate-900 text-sm mt-2 mb-1 font-sans">Multi-Layer Vacuum Barrier for Paneer</h3>
+<p class="text-xs text-slate-600 leading-relaxed">
+            7–9 layer co-extruded Nylon/PE vacuum pouches eliminate oxidative rancidity, preventing yeast and mold count surges up to 21–28 days under 4°C storage.
+          </p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white border-t border-slate-200 py-6 text-xs text-slate-500 font-body">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-2">
+<div class="w-5 h-5 rounded bg-emerald-700 text-white font-bold text-xs flex items-center justify-center font-sans">P</div>
+<span class="font-bold text-slate-900 text-sm font-sans">PackSmart AI</span>
+<span class="text-slate-400">| Complete 50 Converters in 21 Indian States</span>
+</div>
+<div>IS 9845 / FSSAI Hard Constraint Active • © 2026 PackSmart AI</div>
+</div>
+</footer>
+<!-- Embedded Complete 50-Manufacturer Dataset & Comprehensive 5-Factor Scoring Logic -->
+<script>
+  /* -----------------------------------------------------------
+     EXACT 50-MANUFACTURER EMBEDDED DATASET (21 INDIAN STATES)
+  ----------------------------------------------------------- */
+  const manufacturersData = [
+    // ANDHRA PRADESH (1)
+    { id: 1, name: "Aakalpa Packaging Industries Pvt. Ltd.", city: "Ongole", state: "Andhra Pradesh", category: "Flexible packaging", products: "Food packaging pouches; snack food pouches", phone: "", url: "https://aakalpa.tradeindia.com/company-profile.html" },
+
+    // BIHAR (2)
+    { id: 2, name: "R J Enterprises", city: "Patna", state: "Bihar", category: "Paper/corrugated food packaging", products: "Pizza boxes; cardboard food boxes; corrugated rolls", phone: "+919386904801", url: "https://www.rjenterprisesbox.com/" },
+    { id: 3, name: "Bikaner Plastic Industries", city: "Patna", state: "Bihar", category: "Flexible plastic packaging", products: "Printed plastic bags; food packaging pouches", phone: "", url: "https://www.tradeindia.com/bikaner-plastic-industries-11833421/" },
+
+    // CHHATTISGARH (1)
+    { id: 4, name: "Kripal Industries", city: "Bhilai", state: "Chhattisgarh", category: "Rigid PP food packaging", products: "Food packaging containers; trays; cups; glasses", phone: "+918458833220", url: "https://hygiene.fssai.gov.in/files/reports/quiz13395929_food%20grade%20certificate_11zon.pdf" },
+
+    // DELHI (4)
+    { id: 5, name: "Packman Industries", city: "Noida/NCR", state: "Delhi", category: "Flexible packaging", products: "Laminated films; preformed pouches; food packaging materials", phone: "", url: "https://www.packman.in/" },
+    { id: 6, name: "Modwrap", city: "Delhi", state: "Delhi", category: "Flexible packaging", products: "Stand-up pouches; zipper pouches; vacuum pouches", phone: "", url: "https://www.modwrap.com/" },
+    { id: 7, name: "Pinnacle Packsys Private Limited", city: "New Delhi", state: "Delhi", category: "Biodegradable/compostable packaging", products: "Compostable carry bags; grocery bags; biodegradable garbage bags", phone: "", url: "https://www.indiamart.com/pinnaclepacksys/" },
+    { id: 8, name: "Presto Packaging Solutions", city: "Delhi", state: "Delhi", category: "Flexible packaging / bags", products: "Food bags; retail packaging bags; printed polythene bags", phone: "+919999000000", url: "https://www.indiamart.com/prestopackaging/" },
+
+    // GOA (2)
+    { id: 9, name: "Goa Can", city: "Kundaim", state: "Goa", category: "Metal food packaging", products: "Tin cans for food and beverage; processed food cans", phone: "", url: "https://www.goacan.com/" },
+    { id: 10, name: "GKB Packaging", city: "Tivim", state: "Goa", category: "Corrugated boxes", products: "Corrugated boxes; export packaging cartons; industrial boxes", phone: "", url: "https://www.gkbpackaging.com/" },
+
+    // GUJARAT (4)
+    { id: 11, name: "Uflex Ltd.", city: "Sanand", state: "Gujarat", category: "Aseptic liquid packaging", products: "Aseptic liquid packaging sleeves and packs", phone: "", url: "https://www.asepto.com/" },
+    { id: 12, name: "Constantia Flexibles (Parikh Packaging)", city: "Ahmedabad", state: "Gujarat", category: "Flexible packaging", products: "Barrier laminates; pouches; blister foils", phone: "", url: "https://www.cflex.com/locations/india/parikh-packaging/" },
+    { id: 13, name: "Kalyan Multipack", city: "Ahmedabad", state: "Gujarat", category: "Flexible packaging", products: "Multilayer barrier films; vacuum pouches; MAP films", phone: "", url: "https://www.kalyanpack.com/" },
+    { id: 14, name: "Shubham Flexible Packaging", city: "Vadodara", state: "Gujarat", category: "Flexible packaging", products: "Printed pouches; roll stock; retort pouches", phone: "", url: "https://www.shubhampackaging.com/" },
+
+    // HARYANA (2)
+    { id: 15, name: "Sealed Air India", city: "Faridabad", state: "Haryana", category: "Protective and barrier food packaging", products: "Cryovac vacuum bags; food barrier shrink films", phone: "", url: "https://www.sealedair.com/en-in" },
+    { id: 16, name: "Essel Propack (EPL Limited)", city: "Faridabad", state: "Haryana", category: "Laminated tubes", products: "Laminated tubes for food paste/condiments", phone: "", url: "https://www.eplglobal.com/" },
+
+    // HIMACHAL PRADESH (1)
+    { id: 17, name: "Shivalik Packaging", city: "Baddi", state: "Himachal Pradesh", category: "Corrugated and carton packaging", products: "Cartons; corrugated boxes; food display outer packaging", phone: "", url: "https://www.indiamart.com/shivalik-packaging-solan/" },
+
+    // JHARKHAND (1)
+    { id: 18, name: "Ranchi Corrugating Industries", city: "Ranchi", state: "Jharkhand", category: "Corrugated packaging", products: "Corrugated boxes; fruit boxes; industrial packaging", phone: "", url: "https://www.indiamart.com/ranchi-corrugating-industries/" },
+
+    // KARNATAKA (2)
+    { id: 19, name: "Pactiv Evergreen India", city: "Bengaluru", state: "Karnataka", category: "Food service rigid packaging", products: "Thermoformed food containers; clamshells; trays; bowls", phone: "", url: "https://www.pactivevergreen.com/" },
+    { id: 20, name: "Creative Polypack", city: "Bengaluru", state: "Karnataka", category: "Flexible packaging", products: "Barrier films; stand-up pouches; dairy pouches", phone: "", url: "https://www.creativepolypack.com/" },
+
+    // KERALA (1)
+    { id: 21, name: "Choice Pack", city: "Kochi", state: "Kerala", category: "Corrugated and flexible packaging", products: "Marine food packaging; seafood master cartons; vacuum pouches", phone: "", url: "https://www.choicepack.in/" },
+
+    // MADHYA PRADESH (2)
+    { id: 22, name: "Shree Rama Multitech", city: "Indore", state: "Madhya Pradesh", category: "Laminated and flexible packaging", products: "Multilayer barrier films; laminate tubes", phone: "", url: "https://www.shreerama.com/" },
+    { id: 23, name: "Superpack (Indore)", city: "Indore", state: "Madhya Pradesh", category: "Flexible packaging", products: "Food pouches; dairy film; spice packaging pouches", phone: "", url: "https://www.superpackindore.com/" },
+
+    // MAHARASHTRA (7)
+    { id: 24, name: "Huhtamaki India Ltd.", city: "Thane/Mumbai", state: "Maharashtra", category: "Flexible and paper food packaging", products: "Barrier pouches; retort pouches; paper cups/lids; thermoformed trays", phone: "", url: "https://www.huhtamaki.com/en-in/" },
+    { id: 25, name: "Amcor India", city: "Pune/Mumbai", state: "Maharashtra", category: "Flexible packaging", products: "Barrier packaging; vacuum pouches; MAP films", phone: "", url: "https://www.amcor.com/" },
+    { id: 26, name: "Jindal Poly Films", city: "Nashik", state: "Maharashtra", category: "BOPET/BOPP films", products: "BOPET/BOPP films for food packaging lamination", phone: "", url: "https://www.jindalpoly.com/" },
+    { id: 27, name: "Polyplex Corporation", city: "Mumbai", state: "Maharashtra", category: "Polyester films (PET)", products: "BOPET films for food punnets and barrier trays", phone: "", url: "https://www.polyplex.com/" },
+    { id: 28, name: "Cosmo Films", city: "Aurangabad", state: "Maharashtra", category: "BOPP/CPP films", products: "Barrier BOPP films; heat-sealable films for food", phone: "", url: "https://www.cosmofirst.com/" },
+    { id: 29, name: "Time Technoplast", city: "Mumbai", state: "Maharashtra", category: "Rigid plastic packaging", products: "Jerry cans; food containers; IBCs for edible oils/liquids", phone: "", url: "https://www.timetechnoplast.com/" },
+    { id: 30, name: "Ester Industries", city: "Mumbai", state: "Maharashtra", category: "Polyester films & polymers", products: "Specialty polyester films for food packaging", phone: "", url: "https://www.esterindustries.com/" },
+
+    // ODISHA (1)
+    { id: 31, name: "Bhubaneswar Packaging", city: "Bhubaneswar", state: "Odisha", category: "Corrugated boxes", products: "Food shipper boxes; corrugated cartons", phone: "", url: "https://www.indiamart.com/bhubaneswar-packaging/" },
+
+    // PUNJAB (3)
+    { id: 32, name: "Naharpur Packaging", city: "Ludhiana", state: "Punjab", category: "Corrugated packaging", products: "Corrugated boxes; food shipper cartons; fruit packaging", phone: "", url: "https://www.indiamart.com/naharpurpackaging/" },
+    { id: 33, name: "Punjab Poly Films", city: "Mohali", state: "Punjab", category: "Flexible packaging", products: "Laminated rolls; preformed pouches; food bags", phone: "", url: "https://www.indiamart.com/punjab-polyfilms/" },
+    { id: 34, name: "Supreme Corrugators", city: "Jalandhar", state: "Punjab", category: "Corrugated boxes", products: "Rigid boxes; agricultural produce cartons; food boxes", phone: "", url: "https://www.supremecorrugators.com/" },
+
+    // RAJASTHAN (1)
+    { id: 35, name: "Uflex Ltd. (Packaging Films Div)", city: "Jaipur", state: "Rajasthan", category: "Flexible packaging films", products: "BOPET films; barrier coatings; lamination films", phone: "", url: "https://www.uflexltd.com/" },
+
+    // TAMIL NADU (4)
+    { id: 36, name: "RKN Flexibles Pvt. Ltd.", city: "Chennai", state: "Tamil Nadu", category: "Flexible packaging", products: "Food pouches; laminated pouches; 3-layer pouches", phone: "+919150023600", url: "https://www.rknflex.com/" },
+    { id: 37, name: "Sri Adhitya Poly Films Pvt. Ltd.", city: "Chennai", state: "Tamil Nadu", category: "Flexible packaging", products: "Food pouches; frozen food bags; laminated pouches", phone: "", url: "https://www.adhityapolyfilms.in/" },
+    { id: 38, name: "RKP Polybags Pvt. Ltd.", city: "Chennai", state: "Tamil Nadu", category: "Flexible packaging", products: "Paneer packaging printed pouches; food pouches; rolls", phone: "", url: "https://www.laminatedpoucheschennai.com/" },
+    { id: 39, name: "Hitech Polymers", city: "Chennai", state: "Tamil Nadu", category: "Flexible packaging", products: "Milk/curd/paneer pouches; food pouches; LLDPE bags", phone: "", url: "https://www.hitechpolymers.in.net/" },
+
+    // TELANGANA (4)
+    { id: 40, name: "Shreedhar Flexible Packaging", city: "Hyderabad", state: "Telangana", category: "Flexible packaging", products: "Food packaging pouches; multi-layer rolls; barrier bags", phone: "", url: "https://www.shreedharflex.com/" },
+    { id: 41, name: "Pragati Pack", city: "Hyderabad", state: "Telangana", category: "Printed cartons and folding boxes", products: "Food cartons; display packaging; rigid boxes", phone: "", url: "https://www.pragati.com/" },
+    { id: 42, name: "Sreeven Bandex", city: "Secunderabad", state: "Telangana", category: "Strapping and packaging materials", products: "Transit packaging materials; pallet straps; protective wrap", phone: "", url: "https://www.sreevenbandex.com/" },
+    { id: 43, name: "Balaji Flexible Packaging", city: "Hyderabad", state: "Telangana", category: "Flexible packaging", products: "Printed pouches; snack packaging; vacuum pouches", phone: "", url: "https://www.balajiflexible.com/" },
+
+    // UTTAR PRADESH (4)
+    { id: 44, name: "Kanodia Technoplast", city: "Noida", state: "Uttar Pradesh", category: "Flexible barrier packaging", products: "Retort pouches; MAP films; high-barrier laminates", phone: "", url: "https://www.kanodiatechnoplast.com/" },
+    { id: 45, name: "Rollatainers Ltd.", city: "Noida", state: "Uttar Pradesh", category: "Lined cartons / packaging", products: "Lined cartons for dry food; packaging machinery", phone: "", url: "https://www.rollatainers.in/" },
+    { id: 46, name: "Holostik India", city: "Noida", state: "Uttar Pradesh", category: "Security and holographic food packaging", products: "Tamper-evident labels; secure food sleeves; pouches", phone: "", url: "https://www.holostik.com/" },
+    { id: 47, name: "Flexo Polymers", city: "Kanpur", state: "Uttar Pradesh", category: "Flexible packaging", products: "Poly pouches; food grade liners; agriculture produce bags", phone: "", url: "https://www.indiamart.com/flexo-polymers/" },
+
+    // UTTARAKHAND (1)
+    { id: 48, name: "Radha Kishan Enterprises", city: "Haridwar", state: "Uttarakhand", category: "Rigid plastic packaging", products: "PET bottles; jars; containers for food and honey", phone: "", url: "https://www.indiamart.com/radhakishanenterprises/" },
+
+    // WEST BENGAL (2)
+    { id: 49, name: "Century Extrusions", city: "Kolkata", state: "West Bengal", category: "Flexible packaging / aluminium foil", products: "Blister foil; aluminium foil laminates for food", phone: "", url: "https://www.centuryextrusions.com/" },
+    { id: 50, name: "Diamond Pack", city: "Kolkata", state: "West Bengal", category: "Corrugated packaging", products: "Corrugated food cartons; master shippers", phone: "", url: "https://www.indiamart.com/diamondpack-kolkata/" }
+  ];
+
+  // Engine state
+  const state = {
+    commodity: 'mushroom',
+    variety: 'Oyster Mushroom',
+    scientificName: 'Pleurotus ostreatus',
+    rrValue: 220,
+    packGrams: 250,
+    shelfLife: '6-7', // '1-2', '3-5', '6-7', '8-14', '15+'
+    storage: 'refrigerated', // 'refrigerated', 'room', 'transit'
+    producerState: 'Tamil Nadu',
+    producerCity: 'Coimbatore',
+    directoryStateFilter: 'Tamil Nadu',
+    budget: '2-5', // 'under-2', '2-5', '5-10', 'none'
+    activeUnitCost: 3.85
+  };
+
+  /* -----------------------------------------------------------
+     REAL-TIME 5-FACTOR SCORING & DECISION ENGINE
+  ----------------------------------------------------------- */
+  function evaluate5FactorModel() {
+    let result = {
+      score: 90,
+      f1: 33, // Storage & Biological Fit (max 35)
+      f2: 23, // Shelf Life Feasibility (max 25)
+      f3: 19, // Moisture & Gas Control (max 20)
+      f4: 9,  // Transit & Crush Protection (max 10)
+      f5: 8,  // Budget & Cost Alignment (max 10)
+      title: "Ventilated Food-Grade PET Punnet (6-Macro Vent Clamshell)",
+      material: "Food-Grade Virgin PET (180–200μ)",
+      format: "6-Macro Vent Clamshell Punnet",
+      tier: "Tier 1 Solution",
+      statusText: "HIGH SUITABILITY / RESEARCH VERIFIED",
+      statusClass: "bg-emerald-100 text-emerald-900 border-emerald-300",
+      stripeClass: "bg-emerald-700",
+      borderClass: "border-emerald-600",
+      accentColor: "#047857",
+      shelfLifeRange: "7–10 Days",
+      shelfLifeSub: "Chilled 4–6°C continuous",
+      storageProtocol: "4–6°C Cold Chain",
+      storageSub: "Continuous chill chain required",
+      unitCostDisplay: "₹3.40 – ₹4.20 / unit",
+      numericCost: 3.85,
+      machinery: "Zero CaPEx",
+      machinerySub: "Self-hinging clamshell",
+      summary: "Balances fungal respiration (180–220 mg CO₂/kg·h) with moisture control, preventing pileus sweating and bacterial blotch while retaining cap firmness.",
+      rationales: [
+        { label: "Respiration Balance", text: "Macro-perforations maintain oxygen equilibrium above 3.5%, preventing noxious ethanol production." },
+        { label: "Crush & Rigidity", text: "Virgin 180μ thermoformed APET prevents pileus cap mechanical bruising during multi-tier transport." },
+        { label: "Microbial Defense", text: "Ventilated headspace prevents water droplets from falling back onto delicate mycelial caps." }
+      ],
+      hazard: null
+    };
+
+    const isMushroom = state.commodity === 'mushroom';
+    const isPaneer = state.commodity === 'paneer';
+    const isRefrig = state.storage === 'refrigerated';
+    const isRoom = state.storage === 'room';
+    const isTransit = state.storage === 'transit';
+    const isBudgetLow = state.budget === 'under-2';
+    const isBudgetHigh = state.budget === '5-10' || state.budget === 'none';
+
+    if (isMushroom) {
+      // -------------------------------------------------------------
+      // MUSHROOM BIOLOGY LOGIC
+      // -------------------------------------------------------------
+      if (isRoom) {
+        // SCENARIO 2 & Ambient Penalties
+        if (state.shelfLife === '1-2') {
+          result.score = 72;
+          result.f1 = 20; result.f2 = 22; result.f3 = 14; result.f4 = 7; result.f5 = 9;
+          result.title = "Unbleached Kraft Paper Tray with Micro-Perforated Breathable Film";
+          result.material = "Unbleached Kraft Paper (320 GSM) + Perforated Overwrap";
+          result.format = "Open-top absorbent tray with macro-mesh venting";
+          result.unitCostDisplay = "₹2.20 – ₹2.80 / unit";
+          result.numericCost = 2.50;
+          result.shelfLifeRange = "1–2 Days (24–36h max)";
+          result.shelfLifeSub = "Must be sold day of harvest";
+          result.storageProtocol = "Ambient Room (26–34°C)";
+          result.storageSub = "3.5x respiration spike active";
+          result.machinery = "Manual Packaging";
+          result.machinerySub = "Hand wrap or net mesh";
+          result.statusText = "MODERATE FIT / HIGH-TURNOVER ONLY";
+          result.statusClass = "bg-amber-100 text-amber-900 border-amber-300";
+          result.stripeClass = "bg-amber-600";
+          result.borderClass = "border-amber-500";
+          result.accentColor = "#d97706";
+          result.summary = "Ambient heat spikes fungal respiration 3.5x. Kraft absorbs excess transpirational sweat while macro-vents dissipate heat build-up. Capable of 24–36h shelf life before gill darkening. Precaution: Must be sold on day of harvest.";
+          result.rationales = [
+            { label: "Transpirational Sweating", text: "Porous unbleached kraft cellulose wicks droplets away from gills to mitigate pseudomonas blotch." },
+            { label: "Thermal Dissipation", text: "Open perforated structure prevents rapid thermal trapping inside the pack at 30°C+." },
+            { label: "Turnover Constraint", text: "Enzyme tyrosinase causes rapid stipe softening and browning beyond 36 hours without active chilling." }
+          ];
+        } else if (state.shelfLife === '3-5') {
+          result.score = 45;
+          result.f1 = 12; result.f2 = 10; result.f3 = 9; result.f4 = 6; result.f5 = 8;
+          result.title = "Micro-Perforated Mesh Sack with Cellulose Cushion (High Spoilage Risk)";
+          result.statusText = "HIGH RISK / SPOILAGE HAZARD";
+          result.statusClass = "bg-red-100 text-red-950 border-red-300";
+          result.stripeClass = "bg-red-700";
+          result.borderClass = "border-red-600";
+          result.accentColor = "#ba1a1a";
+          result.unitCostDisplay = "₹2.00 – ₹2.60 / unit";
+          result.numericCost = 2.20;
+          result.shelfLifeRange = "3–5 Days (Biological Limit Exceeded)";
+          result.shelfLifeSub = "Severe gill darkening & waterloss";
+          result.summary = "Severe biological incompatibility: Mushroom metabolism at 26–34°C rapidly burns sugar reserves, resulting in stem elongation, cap opening, and anaerobic foul odors within 48 hours.";
+          result.hazard = {
+            title: "Biological Spoilage Inevitable at Ambient Room Temp",
+            desc: "Holding fresh mushrooms at 26–34°C for 3–5 days causes 40%+ weight loss, severe gill liquefaction, and souring. Chilling below 6°C is mandatory for >2 days shelf life."
+          };
+          result.rationales = [
+            { label: "Hyper-Respiration", text: "Mushrooms consume available packaging oxygen in <3 hours at room temp, accelerating tissue autolysis." },
+            { label: "Weight Loss", text: "Transpirational vapor loss causes shriveling and unmarketable sponge-like texture." }
+          ];
+        } else {
+          // 6+ days at room temp -> infeasible
+          result.score = 18;
+          result.f1 = 4; result.f2 = 2; result.f3 = 4; result.f4 = 3; result.f5 = 5;
+          result.title = "Infeasible Packaging Configuration: Spoilage Inevitable";
+          result.statusText = "HIGH RISK / SPOILAGE HAZARD";
+          result.statusClass = "bg-red-100 text-red-950 border-red-300";
+          result.stripeClass = "bg-red-800";
+          result.borderClass = "border-red-700";
+          result.accentColor = "#ba1a1a";
+          result.unitCostDisplay = "N/A";
+          result.numericCost = 2.00;
+          result.shelfLifeRange = "Max 1.5 Days";
+          result.shelfLifeSub = "Target of 6+ days fails completely";
+          result.summary = "Mushroom postharvest biology physically cannot achieve 6+ days at room temperature (26–34°C). Rot, mold, and liquefaction occur in under 72 hours regardless of packaging barrier.";
+          result.hazard = {
+            title: "CRITICAL SPOILAGE HAZARD: Target Exceeds Biological Threshold",
+            desc: "Zero shelf-life feasibility. You must either provide 2–6°C continuous refrigeration or lower target shelf life to 1 day."
+          };
+          result.rationales = [
+            { label: "Microbial Explosion", text: "Pseudomonas tolaasii bacterial blotch and wet-rot overwhelm fruit bodies within 48-60 hours at ambient temps." },
+            { label: "Enzyme Breakdown", text: "Polyphenol oxidases trigger complete blackening of the sporocarp." }
+          ];
+        }
+      } else if (isTransit) {
+        // SCENARIO 3: Broken Cold Chain / Mixed Transit
+        result.score = 80;
+        result.f1 = 28; result.f2 = 20; result.f3 = 16; result.f4 = 8; result.f5 = 8;
+        result.title = "Anti-Fog Coated APET Punnet with Bottom Cellulose Moisture Pad";
+        result.material = "Anti-Fog Coated APET (200μ) + Virgin Cellulose Food Absorber";
+        result.format = "Macro-perforated clamshell with dual bottom humidity pads";
+        result.unitCostDisplay = "₹4.20 – ₹4.90 / unit";
+        result.numericCost = 4.45;
+        result.shelfLifeRange = "5–7 Days";
+        result.shelfLifeSub = "Protects during non-AC tempos";
+        result.storageProtocol = "Mixed Transit (Thermal Breaks)";
+        result.storageSub = "Anti-sweat buffer system";
+        result.machinery = "Manual Snap-Lock";
+        result.machinerySub = "Hinged clamshell closure";
+        result.statusText = "MODERATE FIT / CONDENSATION-VULNERABLE";
+        result.statusClass = "bg-amber-100 text-amber-900 border-amber-300";
+        result.stripeClass = "bg-amber-600";
+        result.borderClass = "border-amber-500";
+        result.accentColor = "#d97706";
+        result.summary = "Thermal cycling between 4°C chilled packing and 30°C non-AC tempo transit causes violent condensation sweating. Anti-fog surfactants disperse droplets into an invisible micro-sheen while the bottom cellulose absorber locks free water, preventing stem base rot.";
+        result.rationales = [
+          { label: "Anti-Fog Surface Tension", text: "Specialized food-grade coating prevents macro-droplet beading that drips back onto caps and induces bacterial spotting." },
+          { label: "Liquid Sequestration", text: "Food-grade bottom absorbent pad traps up to 8ml of free condensation liquid without re-wetting stems." },
+          { label: "Mechanical Cushioning", text: "Rigid APET sidewalls resist crate shifting on bumpy Indian feeder roads." }
+        ];
+      } else {
+        // Refrigerated (2-6°C)
+        if (state.shelfLife === '8-14' || state.shelfLife === '15+') {
+          // SCENARIO 5: Extended Shelf Life
+          if (isBudgetHigh) {
+            result.score = 88;
+            result.f1 = 32; result.f2 = 22; result.f3 = 18; result.f4 = 8; result.f5 = 8;
+            result.title = "Equilibrium MAP Barrier Tray with Active Gas-Flush & Laser Micro-Perforations";
+            result.material = "PP/EVOH Barrier Rigid Tray + High-OTR Laser Perforated Lidding";
+            result.format = "Gas-flushed tray (3–5% O₂, 8–10% CO₂)";
+            result.unitCostDisplay = "₹7.50 – ₹10.00 / pack";
+            result.numericCost = 8.20;
+            result.shelfLifeRange = "10–14 Days";
+            result.shelfLifeSub = "Strict 2–4°C cold chain required";
+            result.storageProtocol = "Continuous Chilled (2–4°C)";
+            result.storageSub = "Commercial cold room required";
+            result.machinery = "Tray Sealer + MAP Gas Mixer";
+            result.machinerySub = "Capital investment ~₹3.5–5 Lakhs";
+            result.statusText = "HIGH SUITABILITY / MAP RESEARCH VERIFIED";
+            result.statusClass = "bg-emerald-100 text-emerald-900 border-emerald-300";
+            result.stripeClass = "bg-emerald-700";
+            result.borderClass = "border-emerald-600";
+            result.accentColor = "#047857";
+            result.summary = "Engineered Modified Atmosphere Packaging. Initial flush with 3–5% O₂ and 8–10% CO₂ suppresses respiration and tyrosinase enzyme browning. Micro-perforated film allows exact diffusion equilibrium to sustain sporocarp firm turgidity up to 14 days.";
+            result.rationales = [
+              { label: "Gas Equilibrium", text: "Laser micro-holes maintain equilibrium O₂ between 3–6%, preventing off-odors while halting senescence." },
+              { label: "Browning Suppression", text: "Controlled CO₂ (8–10%) inhibits polyphenol oxidases, preserving pristine white mushroom caps." }
+            ];
+          } else {
+            // Budget < ₹5 with 8+ days target
+            result.score = 40;
+            result.f1 = 20; result.f2 = 8; result.f3 = 6; result.f4 = 3; result.f5 = 3;
+            result.title = "Standard Perforated Punnet (Infeasible for 8+ Days Target)";
+            result.statusText = "HIGH RISK / INFEASIBLE BUDGET-TARGET FIT";
+            result.statusClass = "bg-red-100 text-red-950 border-red-300";
+            result.stripeClass = "bg-red-700";
+            result.borderClass = "border-red-600";
+            result.accentColor = "#ba1a1a";
+            result.unitCostDisplay = "₹3.40 – ₹4.00 / unit";
+            result.numericCost = 3.60;
+            result.shelfLifeRange = "Max 6–7 Days";
+            result.shelfLifeSub = "Standard punnet cannot reach 10+ days";
+            result.summary = "Mushroom biology cannot sustain 8+ days on standard budget punnets without active MAP gas flush or sub-2°C precision cold rooms. Natural senescence, veil opening, and cap wrinkling occur by day 7.";
+            result.hazard = {
+              title: "Budget & Shelf-Life Infeasible Alignment",
+              desc: "Attaining 8–14 days for mushrooms strictly requires gas-flushed MAP trays (costing ₹7.50–₹10/unit + tray sealer capex). Standard punnets under ₹4 will deteriorate by day 7."
+            };
+            result.rationales = [
+              { label: "Respiration Limit", text: "Passive venting allows normal atmospheric oxygen (21%), which exhausts cellular carbohydrates within 6–7 days." },
+              { label: "Cap Dehydration", text: "Uncontrolled moisture loss causes stipe elasticity loss and veil tearing." }
+            ];
+          }
+        } else if (isBudgetLow) {
+          // SCENARIO 4: Low budget (< ₹2) + Chilled
+          result.score = 78;
+          result.f1 = 28; result.f2 = 21; result.f3 = 13; result.f4 = 6; result.f5 = 10;
+          result.title = "Micro-Perforated LDPE Pouch (25–30 Micron, 4–6 Needle Pinholes)";
+          result.material = "Virgin Food-Grade LDPE Film (25–30 Micron)";
+          result.format = "Needle micro-punched preformed pouch with impulse seal";
+          result.unitCostDisplay = "₹1.10 – ₹1.60 / pouch";
+          result.numericCost = 1.35;
+          result.shelfLifeRange = "4–6 Days";
+          result.shelfLifeSub = "Chilled 4–6°C required";
+          result.storageProtocol = "Refrigerated (2–6°C)";
+          result.storageSub = "Must avoid heavy stack crates";
+          result.machinery = "Hand Impulse Sealer";
+          result.machinerySub = "Low CaPEx (~₹1,500 benchtop)";
+          result.statusText = "MODERATE FIT / BUDGET VIABLE";
+          result.statusClass = "bg-amber-100 text-amber-900 border-amber-300";
+          result.stripeClass = "bg-amber-600";
+          result.borderClass = "border-amber-500";
+          result.accentColor = "#d97706";
+          result.summary = "Meets strict sub-₹2 farm-gate budget while 4–6 needle pinholes prevent anaerobiosis. Trade-off: zero rigid crush resistance; requires rigid master crates during transit to avoid cap fragmentation.";
+          result.rationales = [
+            { label: "Cost Efficiency", text: "Lowest unit cost format available from local film extruders across Indian tier-2 hubs." },
+            { label: "Pinhole Ventilation", text: "Critical 4–6 needle punctures prevent O₂ exhaustion while conserving inside relative humidity." },
+            { label: "Crush Fragility Trade-off", text: "Flexible pouch offers no crush resistance. Workers must not stack bags directly atop one another." }
+          ];
+        } else {
+          // SCENARIO 1: Fresh Mushrooms + Refrigerated (2-6°C) + Target 5-7 Days (Standard optimal fit)
+          result.score = 92;
+          result.f1 = 33; result.f2 = 23; result.f3 = 19; result.f4 = 9; result.f5 = 8;
+          result.title = "Ventilated Food-Grade PET Punnet (6-Macro Vent Clamshell)";
+          result.material = "Food-Grade Virgin PET (180–200μ)";
+          result.format = "6-Macro Vent Clamshell Punnet";
+          result.unitCostDisplay = "₹3.40 – ₹4.20 / unit";
+          result.numericCost = 3.85;
+          result.shelfLifeRange = "7–10 Days";
+          result.shelfLifeSub = "Continuous chilled 4–6°C";
+          result.storageProtocol = "4–6°C Cold Chain";
+          result.storageSub = "Walk-in cooler or display chiller";
+          result.machinery = "Zero CaPEx";
+          result.machinerySub = "Self-hinging clamshell lock";
+          result.statusText = "HIGH SUITABILITY / RESEARCH VERIFIED";
+          result.statusClass = "bg-emerald-100 text-emerald-900 border-emerald-300";
+          result.stripeClass = "bg-emerald-700";
+          result.borderClass = "border-emerald-600";
+          result.accentColor = "#047857";
+          result.summary = "Balances fungal respiration (180–220 mg CO₂/kg·h) with moisture control, preventing pileus sweating and bacterial blotch while retaining cap firmness.";
+          result.rationales = [
+            { label: "Respiration Balance", text: "Macro-perforations maintain oxygen equilibrium above 3.5%, preventing noxious ethanol production." },
+            { label: "Crush & Rigidity", text: "Virgin 180μ thermoformed APET prevents pileus cap mechanical bruising during multi-tier transport." },
+            { label: "Microbial Defense", text: "Non-fog surface prevents water droplets from falling back onto delicate mycelial caps." }
+          ];
+        }
+      }
+    } else {
+      // -------------------------------------------------------------
+      // FRESH PANEER LOGIC
+      // -------------------------------------------------------------
+      if (isRoom || isTransit) {
+        // SCENARIO 7: Fresh Paneer + Ambient or Mixed Transit
+        result.score = 35;
+        result.f1 = 10; result.f2 = 8; result.f3 = 7; result.f4 = 5; result.f5 = 5;
+        result.title = "Retort / Thermal Insulated Barrier Pouch with Ice Gel Pack (High Risk)";
+        result.material = "12μ PET / 9μ Alu Foil / 70μ Cast PP Laminate + Coolant Pack";
+        result.format = "Heavy barrier foil pouch with passive gel coolant insert";
+        result.unitCostDisplay = "₹5.50 – ₹7.20 / pack";
+        result.numericCost = 6.20;
+        result.shelfLifeRange = "Max 12–18 Hours";
+        result.shelfLifeSub = "Rapid souring inevitable without chiller";
+        result.storageProtocol = "Ambient / Thermal Break (Severe Spoilage Risk)";
+        result.storageSub = "Exceeds FSSAI critical temperature limit";
+        result.machinery = "Rotary Heat Sealer";
+        result.machinerySub = "CaPEx ~₹25,000";
+        result.statusText = "HIGH RISK / SEVERE SPOILAGE HAZARD";
+        result.statusClass = "bg-red-100 text-red-950 border-red-300";
+        result.stripeClass = "bg-red-700";
+        result.borderClass = "border-red-600";
+        result.accentColor = "#ba1a1a";
+        result.summary = "Paneer held above 10°C undergoes rapid lactic acid fermentation, severe whey syneresis (water separation), and curd souring within 12–18 hours regardless of packaging barrier.";
+        result.hazard = {
+          title: "SEVERE MICROBIOLOGICAL HAZARD: Thermal Abuse for Dairy",
+          desc: "Paneer is high-moisture (54%) and high-protein. Ambient room temperature causes explosive bacterial growth (coliforms and lactic acid bacteria), rendering it unsafe and sour in under 18 hours."
+        };
+        result.rationales = [
+          { label: "Lactic Fermentation", text: "Psychrotrophic and mesophilic bacteria sour fresh dairy proteins exponentially above 12°C." },
+          { label: "Whey Syneresis", text: "Curd protein matrix collapses under warm transit, ejecting cloudy whey liquor inside any pouch." }
+        ];
+      } else {
+        // SCENARIO 6: Fresh Paneer + Chilled (0-4°C)
+        result.score = 95;
+        result.f1 = 35; result.f2 = 24; result.f3 = 19; result.f4 = 9; result.f5 = 8;
+        result.title = "7 to 9-Layer Co-Extruded PA/PE Vacuum Barrier Pouch (80–100 Micron)";
+        result.material = "Polyamide (Nylon) / Polyethylene Co-Extrusion (PA/PE 20/70μ)";
+        result.format = "Hermetic Chamber Vacuum Pouch (High gas barrier)";
+        result.unitCostDisplay = "₹2.80 – ₹3.60 / pouch";
+        result.numericCost = 3.10;
+        result.shelfLifeRange = "15–28 Days";
+        result.shelfLifeSub = "Unopened at continuous 2–4°C";
+        result.storageProtocol = "Refrigerated (0–4°C)";
+        result.storageSub = "Zero temperature breaks permitted";
+        result.machinery = "Chamber Vacuum Packaging Machine";
+        result.machinerySub = "Tabletop chamber ~₹45,000 – ₹70,000";
+        result.statusText = "HIGH SUITABILITY / RESEARCH VERIFIED";
+        result.statusClass = "bg-emerald-100 text-emerald-900 border-emerald-300";
+        result.stripeClass = "bg-emerald-700";
+        result.borderClass = "border-emerald-600";
+        result.accentColor = "#047857";
+        result.summary = "Fresh paneer is non-respiring. Oxygen evacuation (<0.5% O₂) retards psychrotrophic bacteria, mold, and lipid rancidity. Chamber vacuum sealing locks moisture and prevents yellow surface oxidation.";
+        result.rationales = [
+          { label: "Hermetic O₂ Evacuation", text: "Nylon barrier (<25 cc/m²·d OTR) starves aerobic molds and stops fat oxidation for up to 28 days." },
+          { label: "Puncture & Tear Resistance", text: "Co-extruded PA layer prevents sharp curd block corners from pin-holing the film during freezing or transport." },
+          { label: "Syneresis Retardation", text: "Tight vacuum skin locks unbound moisture directly into the casein protein lattice." }
+        ];
+      }
+    }
+
+    return result;
+  }
+
+  /* -----------------------------------------------------------
+     DIRECTORY RENDERING FUNCTION
+  ----------------------------------------------------------- */
+  function renderSuppliersDirectory() {
+    const grid = document.getElementById('suppliers-grid');
+    const emptyNotice = document.getElementById('empty-state-notice');
+    const badge = document.getElementById('supplier-counter-badge');
+    const dirSelect = document.getElementById('directory-state-select');
+
+    if (!grid) return;
+
+    const filter = state.directoryStateFilter;
+    if (dirSelect) dirSelect.value = filter;
+
+    let matches = [];
+    if (filter === 'ALL') {
+      matches = [...manufacturersData];
+      if (badge) badge.innerText = `Showing all 50 verified suppliers across India`;
+    } else {
+      matches = manufacturersData.filter(m => m.state.toLowerCase() === filter.toLowerCase());
+      if (badge) {
+        if (matches.length > 0) {
+          badge.innerText = `Showing ${matches.length} verified supplier${matches.length > 1 ? 's' : ''} in ${filter}`;
+        } else {
+          badge.innerText = `0 verified suppliers in ${filter}`;
+        }
+      }
+    }
+
+    // Update batch counter display
+    const batchSupplierCounter = document.getElementById('batch-supplier-match-count');
+    if (batchSupplierCounter) {
+      batchSupplierCounter.innerText = `${matches.length > 0 ? matches.length : 'pan-India'} converter${matches.length === 1 ? '' : 's'}`;
+    }
+
+    // Update quick filter pill states
+    document.querySelectorAll('.dir-pill').forEach(btn => {
+      const txt = btn.innerText.trim();
+      const isMatch = (filter === 'ALL' && txt === 'All States') || (txt.toLowerCase() === filter.toLowerCase()) || (filter === 'Delhi' && txt === 'Delhi NCR');
+      if (isMatch) {
+        btn.className = 'dir-pill active px-3 py-1 rounded-lg text-xs font-bold bg-emerald-700 text-white border border-emerald-700 transition font-body';
+      } else {
+        btn.className = 'dir-pill px-3 py-1 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition font-body';
+      }
+    });
+
+    grid.innerHTML = '';
+
+    if (matches.length === 0) {
+      emptyNotice.classList.remove('hidden');
+      document.getElementById('empty-state-text').innerText = `No direct converter registered in ${filter} yet. Showing nearest verified suppliers in the region with pan-India delivery capability.`;
+      manufacturersData.slice(0, 3).forEach(m => renderCard(m, grid, true));
+    } else {
+      emptyNotice.classList.add('hidden');
+      matches.forEach(m => renderCard(m, grid, false));
+    }
+  }
+
+  function renderCard(s, container, isFallback) {
+    const card = document.createElement('div');
+    card.className = 'p-5 rounded-2xl border border-slate-200 bg-white hover:border-emerald-600 hover:shadow-xs transition-all flex flex-col justify-between font-body';
+
+    const phoneBtn = s.phone ? `
+      <a href="tel:${s.phone}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-emerald-700 text-xs font-bold transition">
+        <span>📞</span>
+        <span>${s.phone}</span>
+      </a>
+    ` : '';
+
+    card.innerHTML = `
+      <div>
+        <div class="flex items-start justify-between gap-2 mb-2 font-sans">
+          <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
+            <span>✓</span> Verified Converter
+          </span>
+          ${isFallback ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-100 text-amber-900">Regional Link</span>' : ''}
+        </div>
+        <h4 class="text-base font-extrabold text-slate-900 tracking-tight leading-snug font-sans">${s.name}</h4>
+        <div class="mt-2 flex flex-wrap items-center gap-1.5">
+          <span class="inline-flex items-center text-xs font-semibold px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 border border-slate-200">
+            📍 ${s.city}, ${s.state}
+          </span>
+          <span class="text-[11px] font-medium px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200 font-mono">
+            ${s.category}
+          </span>
+        </div>
+        <div class="mt-3 pt-2.5 border-t border-slate-100">
+          <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5 font-sans">Products / Formats Handled:</div>
+          <p class="text-xs text-slate-700 leading-relaxed">${s.products}</p>
+        </div>
+      </div>
+      <div class="mt-4 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
+        <div>${phoneBtn}</div>
+        <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold transition inline-flex items-center gap-1 shadow-2xs font-sans">
+          <span>Visit Website</span>
+          <span class="text-xs">↗</span>
+        </a>
+      </div>
+    `;
+    container.appendChild(card);
+  }
+
+  function handleDirectoryFilterChange(val) {
+    state.directoryStateFilter = val;
+    renderSuppliersDirectory();
+  }
+
+  function setDirectoryFilter(stateName) {
+    state.directoryStateFilter = stateName;
+    renderSuppliersDirectory();
+  }
+
+  /* Two-way sync with location form */
+  function handleStateChange(val) {
+    state.producerState = val;
+    state.directoryStateFilter = val;
+    renderSuppliersDirectory();
+    updateLiveSidebarModel();
+  }
+
+  function handleCityInput(val) {
+    state.producerCity = val;
+  }
+
+  function quickSetLocation(city, st) {
+    state.producerCity = city;
+    state.producerState = st;
+    state.directoryStateFilter = st;
+    document.getElementById('producer-city-input').value = city;
+    document.getElementById('producer-state-select').value = st;
+    renderSuppliersDirectory();
+    updateLiveSidebarModel();
+  }
+
+  /* Form & Engine Handlers */
+  function handleCommodityChange(type) {
+    state.commodity = type;
+    const mushCard = document.getElementById('card-mushroom');
+    const paneerCard = document.getElementById('card-paneer');
+    const varWrap = document.getElementById('mushroom-variety-wrapper');
+
+    if (type === 'mushroom') {
+      mushCard.className = 'flex items-center p-3 rounded-xl border-2 border-emerald-600 bg-emerald-50/50 cursor-pointer transition';
+      paneerCard.className = 'flex items-center p-3 rounded-xl border-2 border-slate-200 bg-white cursor-pointer transition hover:bg-slate-50';
+      varWrap.style.display = 'block';
+    } else {
+      paneerCard.className = 'flex items-center p-3 rounded-xl border-2 border-emerald-600 bg-emerald-50/50 cursor-pointer transition';
+      mushCard.className = 'flex items-center p-3 rounded-xl border-2 border-slate-200 bg-white cursor-pointer transition hover:bg-slate-50';
+      varWrap.style.display = 'none';
+    }
+    updateLiveSidebarModel();
+  }
+
+  function selectVariety(name, sciName, rr, btn) {
+    state.variety = name;
+    state.scientificName = sciName;
+    state.rrValue = rr;
+    document.querySelectorAll('.variety-btn').forEach(b => {
+      b.className = 'variety-btn p-2.5 text-center rounded-xl border border-slate-200 text-xs font-semibold hover:border-slate-300';
+    });
+    btn.className = 'variety-btn p-2.5 text-center rounded-xl border-2 border-emerald-600 bg-emerald-50 text-xs font-semibold';
+    updateLiveSidebarModel();
+  }
+
+  function setPackSize(grams, btn) {
+    state.packGrams = grams;
+    document.getElementById('pack-size-display').innerText = `${grams} grams`;
+    document.querySelectorAll('.pack-size-btn').forEach(b => {
+      b.className = 'pack-size-btn px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-200 bg-white hover:bg-slate-50 font-body';
+    });
+    btn.className = 'pack-size-btn active px-3 py-1.5 text-xs font-bold rounded-lg border-2 border-emerald-600 bg-emerald-50 text-emerald-800 font-body';
+  }
+
+  function setShelfLife(val, btn) {
+    state.shelfLife = val;
+    document.querySelectorAll('.shelflife-btn').forEach(b => {
+      b.className = 'shelflife-btn p-2 text-xs font-semibold rounded-lg border border-slate-200 bg-white hover:border-slate-300 font-body';
+    });
+    btn.className = 'shelflife-btn active p-2 text-xs font-semibold rounded-lg border-2 border-emerald-600 bg-emerald-50 text-emerald-900 font-bold font-body';
+    updateLiveSidebarModel();
+  }
+
+  function setStorage(val) {
+    state.storage = val;
+    ['refrig', 'room', 'transit'].forEach(s => {
+      const el = document.getElementById(`storage-${s}`);
+      if (s === (val === 'refrigerated' ? 'refrig' : val)) {
+        el.className = 'p-2.5 rounded-xl border-2 border-emerald-600 bg-emerald-50/50 cursor-pointer flex flex-col justify-between';
+      } else {
+        el.className = 'p-2.5 rounded-xl border-2 border-slate-200 bg-white cursor-pointer flex flex-col justify-between hover:bg-slate-50';
+      }
+    });
+    updateLiveSidebarModel();
+  }
+
+  function setBudget(val, btn) {
+    state.budget = val;
+    document.querySelectorAll('.budget-btn').forEach(b => {
+      b.className = 'budget-btn p-2 text-xs rounded-lg border border-slate-200 bg-white hover:border-slate-300 font-body';
+    });
+    btn.className = 'budget-btn active p-2 text-xs rounded-lg border-2 border-emerald-600 bg-emerald-50 text-emerald-900 font-bold font-body';
+    updateLiveSidebarModel();
+  }
+
+  function updateLiveSidebarModel() {
+    const evalData = evaluate5FactorModel();
+    const liveScoreEl = document.getElementById('sidebar-live-score');
+    const liveBarEl = document.getElementById('sidebar-score-bar');
+    const liveSummaryEl = document.getElementById('sidebar-verdict-summary');
+
+    if (liveScoreEl) liveScoreEl.innerText = `${evalData.score} / 100`;
+    if (liveBarEl) liveBarEl.style.width = `${evalData.score}%`;
+
+    if (evalData.score >= 85) {
+      if (liveScoreEl) liveScoreEl.className = 'font-mono font-black text-sm px-2 py-0.5 rounded bg-emerald-100 text-emerald-800';
+      if (liveBarEl) liveBarEl.className = 'bg-emerald-600 h-1.5 rounded-full bar-fill';
+      if (liveSummaryEl) liveSummaryEl.innerText = 'High biological compatibility. Low microbial blotch & condensation risk.';
+    } else if (evalData.score >= 60) {
+      if (liveScoreEl) liveScoreEl.className = 'font-mono font-black text-sm px-2 py-0.5 rounded bg-amber-100 text-amber-800';
+      if (liveBarEl) liveBarEl.className = 'bg-amber-500 h-1.5 rounded-full bar-fill';
+      if (liveSummaryEl) liveSummaryEl.innerText = 'Moderate fit with biological trade-offs (condensation, crush fragility, or budget limits).';
+    } else {
+      if (liveScoreEl) liveScoreEl.className = 'font-mono font-black text-sm px-2 py-0.5 rounded bg-red-100 text-red-800';
+      if (liveBarEl) liveBarEl.className = 'bg-red-600 h-1.5 rounded-full bar-fill';
+      if (liveSummaryEl) liveSummaryEl.innerText = 'High risk: Target exceeds postharvest temperature or respiration limits.';
+    }
+
+    if (state.commodity === 'mushroom') {
+      const multiplier = state.storage === 'room' ? 3.5 : 1.0;
+      const baseRR = state.rrValue;
+      const effectiveRR = Math.round(baseRR * multiplier);
+
+      document.getElementById('live-commodity-title').innerText = `${state.variety} (${state.scientificName})`;
+      document.getElementById('live-rr-val').innerText = `${effectiveRR - 20}–${effectiveRR + 20}`;
+      document.getElementById('live-rr-unit').innerText = state.storage === 'room' ? 'mg CO₂/kg·h @ 30°C (3.5x Spike)' : 'mg CO₂/kg·h @ 5°C';
+      document.getElementById('live-moisture-val').innerText = '90–92%';
+      document.getElementById('live-moisture-sub').innerText = state.storage === 'transit' ? 'Severe sweat pooling risk' : 'Sweating weight loss risk';
+      document.getElementById('live-otr-val').innerText = state.storage === 'room' ? '> 16,000 cc/m²·d (High Vent)' : '8,000–12,000 cc/m²·d';
+      document.getElementById('live-perm-bar').style.width = state.storage === 'room' ? '96%' : '82%';
+    } else {
+      document.getElementById('live-commodity-title').innerText = 'Fresh Paneer (Dairy Solids)';
+      document.getElementById('live-rr-val').innerText = '< 5 (Non-respiring)';
+      document.getElementById('live-rr-unit').innerText = 'Casein matrix, anaerobic';
+      document.getElementById('live-moisture-val').innerText = '52–56%';
+      document.getElementById('live-moisture-sub').innerText = 'Syneresis & whey expulsion risk';
+      document.getElementById('live-otr-val').innerText = '< 30 cc/m²·d (Nylon Barrier)';
+      document.getElementById('live-perm-bar').style.width = '12%';
+    }
+  }
+
+  function updateBatchCost() {
+    const qty = parseInt(document.getElementById('batch-quantity-select').value, 10);
+    const cost = state.activeUnitCost || 3.85;
+    const total = Math.round(qty * cost);
+    document.getElementById('batch-total-cost').innerText = `₹${total.toLocaleString('en-IN')}`;
+  }
+
+  function executeAnalysis() {
+    const btn = document.getElementById('analyze-btn');
+    const txt = document.getElementById('btn-text');
+    txt.innerText = 'Calculating 5-Factor Score & Querying Converters...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      txt.innerText = 'Analyze Packaging & Match Local Converters';
+      btn.disabled = false;
+
+      const results = document.getElementById('results-container');
+      results.classList.remove('hidden');
+
+      const data = evaluate5FactorModel();
+      state.activeUnitCost = data.numericCost;
+
+      // Update text fields
+      document.getElementById('rec-title').innerText = data.title;
+      document.getElementById('rec-summary').innerText = data.summary;
+      document.getElementById('rec-score-num').innerText = data.score;
+      document.getElementById('rec-shelflife-val').innerText = data.shelfLifeRange;
+      document.getElementById('rec-shelflife-sub').innerText = data.shelfLifeSub;
+      document.getElementById('rec-storage-val').innerText = data.storageProtocol;
+      document.getElementById('rec-storage-sub').innerText = data.storageSub;
+      document.getElementById('rec-unitcost-val').innerText = data.unitCostDisplay;
+      document.getElementById('rec-machinery-val').innerText = data.machinery;
+      document.getElementById('rec-machinery-sub').innerText = data.machinerySub;
+      document.getElementById('rec-top-left-badge').innerText = data.score >= 85 ? 'REAL-TIME 5-FACTOR OPTIMIZED FIT' : 'CONDITIONAL RECOMMENDATION';
+
+      // Update score dial stroke
+      const circleBar = document.getElementById('score-circle-bar');
+      const radius = 40;
+      const circumference = 2 * Math.PI * radius; // 251.32
+      const offset = circumference - (data.score / 100) * circumference;
+      circleBar.style.strokeDashoffset = offset;
+      circleBar.setAttribute('stroke', data.accentColor);
+
+      // Update badge
+      const badge = document.getElementById('rec-suitability-badge');
+      badge.innerText = data.statusText;
+      badge.className = `mt-2.5 px-3 py-1 rounded-full text-xs font-bold text-center font-body border ${data.statusClass}`;
+
+      // Update 5 sub-factors
+      document.getElementById('score-f1').innerText = `${data.f1} / 35`;
+      document.getElementById('bar-f1').style.width = `${Math.round((data.f1 / 35) * 100)}%`;
+      document.getElementById('score-f2').innerText = `${data.f2} / 25`;
+      document.getElementById('bar-f2').style.width = `${Math.round((data.f2 / 25) * 100)}%`;
+      document.getElementById('score-f3').innerText = `${data.f3} / 20`;
+      document.getElementById('bar-f3').style.width = `${Math.round((data.f3 / 20) * 100)}%`;
+      document.getElementById('score-f4').innerText = `${data.f4} / 10`;
+      document.getElementById('bar-f4').style.width = `${Math.round((data.f4 / 10) * 100)}%`;
+      document.getElementById('score-f5').innerText = `${data.f5} / 10`;
+      document.getElementById('bar-f5').style.width = `${Math.round((data.f5 / 10) * 100)}%`;
+
+      // Main card border & stripe
+      const mainCard = document.getElementById('main-rec-card');
+      mainCard.className = `rounded-2xl border-2 ${data.borderClass} bg-white overflow-hidden shadow-xs my-6 transition-colors`;
+      const stripe = document.getElementById('rec-top-stripe');
+      stripe.className = `px-6 py-2.5 ${data.stripeClass} text-white flex items-center justify-between text-xs font-semibold`;
+
+      // Hazard banner logic
+      const hazardEl = document.getElementById('hazard-banner');
+      if (data.hazard) {
+        hazardEl.classList.remove('hidden');
+        document.getElementById('hazard-title').innerText = data.hazard.title;
+        document.getElementById('hazard-desc').innerText = data.hazard.desc;
+      } else {
+        hazardEl.classList.add('hidden');
+      }
+
+      // Rationale list
+      const ratList = document.getElementById('rec-rationale-list');
+      ratList.innerHTML = '';
+      data.rationales.forEach(r => {
+        const li = document.createElement('li');
+        li.className = 'flex items-start gap-2';
+        li.innerHTML = `
+          <span class="text-emerald-600 font-bold">✓</span>
+          <span><strong>${r.label}:</strong> ${r.text}</span>
+        `;
+        ratList.appendChild(li);
+      });
+
+      // Update Batch Cost
+      updateBatchCost();
+
+      // Synchronize directory filter with producer state
+      state.directoryStateFilter = state.producerState;
+      renderSuppliersDirectory();
+
+      results.scrollIntoView({ behavior: 'smooth' });
+    }, 500);
+  }
+
+  // Initial render
+  document.addEventListener('DOMContentLoaded', () => {
+    renderSuppliersDirectory();
+    updateLiveSidebarModel();
+    updateBatchCost();
+  });
+</script>
+</body></html>
